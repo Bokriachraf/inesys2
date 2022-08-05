@@ -30,6 +30,7 @@ console.log(id_depart,id_arrive)
 let dist=(10)
 let Dep_L=(null)
 let Dep_S=(null)
+let End_L=(null)
 let chemin=[]
 
 for (let i=0 ; i < Lignes_arrets.length; i++){
@@ -38,15 +39,23 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
           Dep_L=Lignes_arrets[i][0]
           Dep_S=Lignes_arrets[i][3]
           }
+          else if (Lignes_arrets[i][1]===id_arrive){
+               End_L=Lignes_arrets[i][0]       
+           }
 }
 for (let i=0 ; i < Lignes_arrets.length; i++){
      if (Lignes_arrets[i][0] === Dep_L && Lignes_arrets[i][3]===Dep_S && Lignes_arrets[i][2]<=dist) {
           chemin.push(Lignes_arrets[i][1])
-           }
-     
+           }     
 }
+// for (let i=0 ; i < Lignes_arrets.length; i++){
+//      if (Lignes_arrets[i][1]===id_arrive){
+//      End_L=Lignes_arrets[i][0]       
+//  }
+// }
 
-console.log(`la lignes de départ est ${Dep_L} dans le sens ${Dep_S} et le chemin de départ suivant l'id arret est ${chemin.reverse()}`)
+console.log(`la lignes de départ est ${Dep_L} dans le sens ${Dep_S} et le chemin de départ suivant l'id arret est ${chemin.reverse()} 
+et la lignes End est ${End_L}`)
 
 
 } 
