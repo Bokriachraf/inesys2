@@ -1,7 +1,7 @@
 function inesys2(Depart,Arrive) { 
      
      // (`id`, `nom`) 
-     const arrets=[[1, 'A'],[2, 'B'],[3, 'C'],[4, 'D'],[5, 'E'],[6, 'F'],[7, 'G'],[8, 'H'],[9, 'I'],[10, 'J'],[11, 'K'],[13, 'M'],[14, 'N'],[15, 'O'],[16, 'P'],[17, 'Q'],[18, 'R'],[19, 'S'],[20, 'T'],[21, 'U'],[22, 'V'],[23, 'W'],[24, 'X'],[25, 'Y'],[26, 'Z']]          
+     const arrets=[[1, 'A'],[2, 'B'],[3, 'C'],[4, 'D'],[5, 'E'],[6, 'F'],[7, 'G'],[8, 'H'],[9, 'I'],[10, 'J'],[11, 'K'],[12, 'L'],[13, 'M'],[14, 'N'],[15, 'O'],[16, 'P'],[17, 'Q'],[18, 'R'],[19, 'S'],[20, 'T'],[21, 'U'],[22, 'V'],[23, 'W'],[24, 'X'],[25, 'Y'],[26, 'Z']]          
      // (`id`, `nom`) 
      const lignes=[[1, 'Ligne 1'],[2, 'Ligne 2'],[3, 'Ligne 3'],[4, 'Ligne 4'],[4, 'Ligne 4']];
       // (`id_ligne`,`id_arret`,`num`,`sens`)
@@ -28,8 +28,9 @@ for (let i=0 ; i < arrets.length; i++){
 // console.log(id_depart,id_arrive,Lignes_arrets[0][2])
 // console.log(Lignes_arrets[54][3])
 let dist=(10)
-let Dep_L=(null);let Dep_S=(null);let Dep_P=(null);let End_L=(null);let End_P=(null);
-let End_S=(null)
+let Dep_L=(null);let Dep_S=(null);let Dep_P=(null);let End_L=(null);let End_P=(null);let End_S=(null);
+let arret_f1=(null);let arret_f2=(null) ;
+let S_f2=(null) ;
 let chemin=[]
 for (let i=0 ; i < Lignes_arrets.length; i++){
      if (Lignes_arrets[i][1] === id_depart ) {
@@ -48,16 +49,12 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
           }
          }
        }
-       if (Dep_L===End_L){
-          chemin.push([Dep_L,Dep_S,End_P])
-      }else{
+       
 
-       chemin.push([Dep_L,Dep_S],[5],[End_L,End_S,End_P])
+   chemin.push([Dep_L,Dep_S],[5],[End_L,End_S,End_P])
        
      
-       let arret_f1=(null) 
-       let arret_f2=(null) 
-       let S_f2=(null) 
+     
        if (Dep_L===1){
           if (Dep_S===0){
                arret_f1=5
@@ -79,9 +76,9 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
           arret_f2=5
       }else if(End_L===2){
           arret_f2=7
-      }if(End_L===3){
+      }else if(End_L===3){
           arret_f2=5
-      }if(End_L===4){
+      }else if(End_L===4){
           arret_f2=7
       }
       
@@ -96,12 +93,19 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
       }
 
       chemin[1].push(S_f2,arret_f2)
+      
+      if (arret_f2===5){
+          chemin.splice(1,1)
+      }
+     
+
+
       console.log (chemin)
  }
 
-} 
+
         
 
-     let De="I";
-     let Ar="Q";
+     let De="P";
+     let Ar="L";
      inesys2(De,Ar);
