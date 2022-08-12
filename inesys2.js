@@ -46,8 +46,16 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
               End_L=Lignes_arrets[i][0]
               End_P=Lignes_arrets[i][1]
               End_S=Lignes_arrets[i][3]   
+         }else if(id_arrive===3){
+           End_L=1
+           End_P=3
+           End_S=1 
+         } else if(id_arrive===4){
+           End_L=1
+           End_P=4
+           End_S=1 
+         }        
          }
-        }
       }
       
 
@@ -55,19 +63,26 @@ for (let i=0 ; i < Lignes_arrets.length; i++){
       
     
     
-switch(Dep_L,Dep_S){
-   case (1,0) : arret_f1=5
-   case (1,1) : arret_f1=1
-   case (2) : arret_f1=7
-   case (3) : arret_f1=5
-   case (4) : arret_f1=7
+switch(Dep_L){
+   case (1) :
+        arret_f1=5;
+        break;
+     case (2) : 
+   arret_f1=7;
+   break;
+   case (3) :
+        arret_f1=5;
+        break;
+   case (4) : 
+   arret_f1=7;
+   break;
 }
    chemin[0][2]=arret_f1;
      
          switch(End_L){
            case (1) : arret_f2=5
            case (2) : arret_f2=7
-           case (3) : arret_f2=5
+           case (3) : arret_f2=5;
            case (4) : arret_f2=7
        }
  
@@ -82,13 +97,19 @@ switch(Dep_L,Dep_S){
      }
 
      chemin[1].push(S_f2,arret_f2);
-     
-     if (arret_f2===5){
-         chemin.splice(1,1)
-     }  
+     if (End_L===Dep_L ){
+       chemin.splice(0,2)
+   } else if (End_L===5){
+       chemin.splice(1,1)
+   }
+ 
      console.log (chemin)
 }  
 
-    let De="P";
-    let Ar="L";
+    let De="M";
+    let Ar="X";
     inesys2(De,Ar);
+
+   
+
+
